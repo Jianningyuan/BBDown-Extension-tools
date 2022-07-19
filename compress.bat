@@ -1,4 +1,3 @@
-@REM "C:\Program Files\7-Zip\7z.exe" a -t7z D:\BilibiliDownloadFile\%strimALL%\%strimALL%DanmakuAndSubtitles.7z -mx=9 -mhe=on D:\BilibiliDownloadFile\%strimALL%\*.ass D:\BilibiliDownloadFile\%strimALL%\*.xml
 @echo off
 set fileNamefor7z=D:\BilibiliDownloadFile\%1\DanmakuAndSubtitles.7z
 set fileNameforass=D:\BilibiliDownloadFile\%1\*.ass

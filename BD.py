@@ -1,6 +1,9 @@
 from os import system,listdir,path,rename
 from re import sub
-
+from requests import get
+from urllib import response
+from requests import get
+from json import dumps,loads
 
 def getFileName1(lpath,suffix):
     # 获取指定目录下的所有指定后缀的文件名 
@@ -19,9 +22,26 @@ def validateTitle(title):
 	new_title = sub(rstr, "_", title) # 替换为下划线
 	return new_title
 
+
+def ngp(bvid):
+    url = 'http://api.bilibili.com/x/web-interface/view?bvid='+str(bvid)  # 使用？携带参数
+    rsp=get(url).json()
+    json_str=dumps(rsp)
+    data2=loads(json_str)
+    data3=data2['data']
+    json_str1=dumps(data3)
+    data4=loads(json_str1)
+    fin=str(data4["videos"])
+    return fin
+
+
 if __name__ == '__main__':
+    para2=str(1)
     para1 = input("请输入要下载视频的BV号：")
-    para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
+    if ngp(para1) == "1":
+        para2=str(1)
+    else:
+        para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
     if "," in para2 or "-" in para2 or "ALL" in para2:
         try:
             rnp1 = "%s \"%s\" \"%s\" \"%s\""%("D:\BilibiliDownloadTools\pasparmu.bat",para1, para2,"D:\BilibiliDownloadFile")
