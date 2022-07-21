@@ -5,6 +5,33 @@ from urllib import response
 from requests import get
 from json import dumps,loads
 
+
+# bv2av用于bv号转av号
+def bv2av(x):
+    table = 'fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF' # 码表
+    tr = {} # 反查码表
+    # 初始化反查码表
+    for i in range(58):
+        tr[table[i]] = i
+    s = [11, 10, 3, 8, 4, 6] # 位置编码表
+    XOR = 177451812 # 固定异或值
+    ADD = 8728348608 # 固定加法值
+    r = 0
+    for i in range(6):
+        r += tr[x[s[i]]] * 58 ** i
+    return (r - ADD) ^ XOR
+
+
+# 用于获取视频状态
+def FindVideo(avid):
+    url = 'http://api.bilibili.com/archive_stat/stat?aid='+str(avid)  # 使用？携带参数
+    rfv=get(url).json()
+    json_str=dumps(rfv)
+    data2=loads(json_str)
+    # data3=data2['code']
+    return data2
+
+
 def getFileName1(lpath,suffix):
     # 获取指定目录下的所有指定后缀的文件名 
     input_template_All=[]
@@ -23,7 +50,7 @@ def validateTitle(title):
 	return new_title
 
 
-def ngp(bvid):
+def ngp(bvid): #B站获取视频信息的api
     url = 'http://api.bilibili.com/x/web-interface/view?bvid='+str(bvid)  # 使用？携带参数
     rsp=get(url).json()
     json_str=dumps(rsp)
@@ -38,6 +65,7 @@ def ngp(bvid):
 if __name__ == '__main__':
     para2=str(1)
     para1 = input("请输入要下载视频的BV号：")
+    #print(FindVideo(bv2av(para1)))
     if ngp(para1) == "1":
         para2=str(1)
     else:
