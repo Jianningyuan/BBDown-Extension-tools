@@ -1,9 +1,12 @@
-from os import system,listdir,path,rename
+from fileinput import filename
+from os import listdir,path,rename,mkdir,remove,walk
 from re import sub
 from requests import get
 from urllib import response
 from requests import get
 from json import dumps,loads
+from time import sleep
+from subprocess import call
 
 
 # bv2av用于bv号转av号
@@ -28,8 +31,8 @@ def FindVideo(avid):
     rfv=get(url).json()
     json_str=dumps(rfv)
     data2=loads(json_str)
-    # data3=data2['code']
-    return data2
+    data3=data2['code']
+    return data3
 
 
 def getFileName1(lpath,suffix):
@@ -46,7 +49,7 @@ def getFileName1(lpath,suffix):
 
 def validateTitle(title):
 	rstr = r"[\/\\\:\*\?\"\<\>\|]" # '/ \ : * ? " < > |'
-	new_title = sub(rstr, "_", title) # 替换为下划线
+	new_title = sub(rstr, "_", title).replace(" ","_") # 替换为下划线
 	return new_title
 
 
@@ -62,38 +65,80 @@ def ngp(bvid): #B站获取视频信息的api
     return fin
 
 
+def MultiVidieoDownload(BV,workDir,P):
+    call("D:\\BilibiliDownloadTools\\BBDown_win-x64\\BBDown.exe "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
+
+
+def SingleVideoDownload(BV,workDir,P):
+    # call("@echo off")
+    mkdir(workDir)#"D:\BilibiliDownloadFile\Temporary")
+    call("D:\\BilibiliDownloadTools\\BBDown_win-x64\\BBDown.exe "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
+
+
+def Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe):
+    # fileNameFor7z="D:\\BilibiliDownloadFile\\"+fileName+"\\DanmakuAndSubtitles.7z"
+    # fileNameForAss="D:\\BilibiliDownloadFile\\"+fileName+"\\*.ass"
+    # fileNameForXml="D:\\BilibiliDownloadFile\\"+fileName+"\\*.xml"
+    call(dirOf7z+" a -t7z "+fileNameFor7z+" -mx="+mx+" -mhe="+mhe+" "+fileNameForAss+" "+fileNameForXml,shell=True)#\"C:\Program Files\7-Zip\7z.exe\"
+
+
 if __name__ == '__main__':
     para2=str(1)
-    para1 = input("请输入要下载视频的BV号：")
-    #print(FindVideo(bv2av(para1)))
-    if ngp(para1) == "1":
-        para2=str(1)
-    else:
-        para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
-    if "," in para2 or "-" in para2 or "ALL" in para2:
-        try:
-            rnp1 = "%s \"%s\" \"%s\" \"%s\""%("D:\BilibiliDownloadTools\pasparmu.bat",para1, para2,"D:\BilibiliDownloadFile")
-            system(rnp1)
-        except Exception as e1:
-            print(e1)
-    else:
-        try:
-            rnp = "%s \"%s\" \"%s\" \"%s\""%("D:\BilibiliDownloadTools\paspar.bat",para1, para2,"D:\BilibiliDownloadFile\Temporary")#给paspar.bat传BV号及P数
-            system(rnp)
-        except Exception as e:
-            print(e)
-        Files=listdir("D:\BilibiliDownloadFile\Temporary")
-        for k in range(len(Files)):
-            Files[k]=path.splitext(Files[k])[1]# 提取文件夹内所有文件的后缀
-        Str2=['.mp4']
-        if len(list(set(Str2).intersection(set(Files))))==len(Str2):
-            #有MP4
-            fileName=getFileName1("D:\BilibiliDownloadFile\Temporary",".mp4")
-            fileName=fileName[0]
-            fileName=validateTitle(fileName)
-            rename("D:\BilibiliDownloadFile\Temporary","D:\BilibiliDownloadFile\\"+fileName)
+    para1 = input("请输入要下载视频的BV号: ")
+    findVideo=bv2av(para1)
+    findVideo=FindVideo(findVideo)
+    if str(findVideo)=="0":
+        if ngp(para1) == "1":
+            para2=str(1)
+        else:
+            para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
+        if "," in para2 or "-" in para2 or "ALL" in para2:
             try:
-                rcom = "%s \"%s\""%("D:\BilibiliDownloadTools\compress.bat",fileName)#压缩（批处理）
-                system(rcom)
-            except Exception as e2:
-                print(e2)
+                # rnp1 = "%s \"%s\" \"%s\" \"%s\""%("D:\BilibiliDownloadTools\pasparmu.bat",para1, para2,"D:\BilibiliDownloadFile")
+                # system(rnp1)
+                MultiVidieoDownload(para1,"D:\\BilibiliDownloadFile",para2)
+            except Exception as e1:
+                print(e1)
+        else:
+            try:
+                # rnp = "%s \"%s\" \"%s\" \"%s\""%("D:\BilibiliDownloadTools\paspar.bat",para1, para2,"D:\BilibiliDownloadFile\Temporary")#给paspar.bat传BV号及P数
+                # system(rnp)
+                SingleVideoDownload(para1,"D:\\BilibiliDownloadFile\\Temporary",para2)
+            except Exception as e:
+                print(e)
+                print("_________")
+            Files=listdir("D:\\BilibiliDownloadFile\\Temporary")
+            for k in range(len(Files)):
+                Files[k]=path.splitext(Files[k])[1]# 提取文件夹内所有文件的后缀
+            Str2=['.mp4']
+            if len(list(set(Str2).intersection(set(Files))))==len(Str2):
+                #有MP4
+                fileName=getFileName1("D:\BilibiliDownloadFile\Temporary",".mp4")
+                fileName=fileName[0]
+                fileName=validateTitle(fileName)
+                rename("D:\BilibiliDownloadFile\Temporary","D:\BilibiliDownloadFile\\"+fileName)
+                try:
+                    # rcom = "%s \"%s\""%("D:\BilibiliDownloadTools\compress.bat",fileName)#压缩（批处理）
+                    # system(rcom)
+                    dirOf7z="\"C:\\Program Files\\7-Zip\\7z.exe\""
+                    fileNameFor7z="D:\\BilibiliDownloadFile\\"+fileName+"\\DanmakuAndSubtitles.7z"
+                    fileNameForAss="D:\\BilibiliDownloadFile\\"+fileName+"\\*.ass"
+                    fileNameForXml="D:\\BilibiliDownloadFile\\"+fileName+"\\*.xml"
+                    myPath="D:\\BilibiliDownloadFile\\"+fileName
+                    mx="9"
+                    mhe="on"
+                    Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe)
+                    
+                    
+                    for assfoldName, asssubfolders, assfilenames in walk(myPath):     #用os.walk方法取得path路径下的文件夹路径，子文件夹名，所有文件名
+                        for assfilename in assfilenames:                         #遍历列表下的所有文件名
+                            if assfilename.endswith('.ass'):                #当文件名以.png后缀结尾时
+                                remove(myPath.join(assfilename))    #删除符合条件的文件
+                                print("{} deleted.".format(assfilename))
+                    #remove(fileNameForAss)
+                    #remove(fileNameForXml)
+                except Exception as e2:
+                    print(e2)
+    else:
+        print("视频不存在！")
+        sleep(1)
