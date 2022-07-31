@@ -76,10 +76,6 @@ def SingleVideoDownload(BV,workDir,P):
 
 
 def Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe):
-    # fileNameFor7z="D:\\BilibiliDownloadFile\\"+fileName+"\\DanmakuAndSubtitles.7z"
-    # fileNameForAss="D:\\BilibiliDownloadFile\\"+fileName+"\\*.ass"
-    # fileNameForXml="D:\\BilibiliDownloadFile\\"+fileName+"\\*.xml"
-    # \"C:\Program Files\7-Zip\7z.exe\"
     call(dirOf7z+" a -t7z "+fileNameFor7z+" -mx="+mx+" -mhe="+mhe+" "+fileNameForAss+" "+fileNameForXml,shell=True)
 
 
@@ -95,15 +91,11 @@ if __name__ == '__main__':
             para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
         if "," in para2 or "-" in para2 or "ALL" in para2:
             try:
-                # rnp1 = "%s \"%s\" \"%s\" \"%s\""%("D:\BilibiliDownloadTools\pasparmu.bat",para1, para2,"D:\BilibiliDownloadFile")
-                # system(rnp1)
                 MultiVidieoDownload(para1,"D:\\BilibiliDownloadFile",para2)
             except Exception as e1:
                 print(e1)
         else:
             try:
-                # rnp = "%s \"%s\" \"%s\" \"%s\""%("D:\BilibiliDownloadTools\paspar.bat",para1, para2,"D:\BilibiliDownloadFile\Temporary")#给paspar.bat传BV号及P数
-                # system(rnp)
                 SingleVideoDownload(para1,"D:\\BilibiliDownloadFile\\Temporary",para2)
             except Exception as e:
                 print(e)
@@ -119,8 +111,6 @@ if __name__ == '__main__':
                 fileName=validateTitle(fileName)
                 rename("D:\BilibiliDownloadFile\Temporary","D:\BilibiliDownloadFile\\"+fileName)
                 try:
-                    # rcom = "%s \"%s\""%("D:\BilibiliDownloadTools\compress.bat",fileName)#压缩（批处理）
-                    # system(rcom)
                     dirOf7z="\"C:\\Program Files\\7-Zip\\7z.exe\""
                     fileNameFor7z="D:\\BilibiliDownloadFile\\"+fileName+"\\DanmakuAndSubtitles.7z"
                     fileNameForAss="D:\\BilibiliDownloadFile\\"+fileName+"\\*.ass"
@@ -134,8 +124,6 @@ if __name__ == '__main__':
                     xmlfileName=myPath+"\\"+getFileName1(myPath,".xml")[0]+".xml"
                     remove(assfileName)
                     remove(xmlfileName)
-                    #remove(fileNameForAss)
-                    #remove(fileNameForXml)
                 except Exception as e2:
                     print(e2)
     else:
