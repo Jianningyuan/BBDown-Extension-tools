@@ -79,7 +79,8 @@ def Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe):
     # fileNameFor7z="D:\\BilibiliDownloadFile\\"+fileName+"\\DanmakuAndSubtitles.7z"
     # fileNameForAss="D:\\BilibiliDownloadFile\\"+fileName+"\\*.ass"
     # fileNameForXml="D:\\BilibiliDownloadFile\\"+fileName+"\\*.xml"
-    call(dirOf7z+" a -t7z "+fileNameFor7z+" -mx="+mx+" -mhe="+mhe+" "+fileNameForAss+" "+fileNameForXml,shell=True)#\"C:\Program Files\7-Zip\7z.exe\"
+    # \"C:\Program Files\7-Zip\7z.exe\"
+    call(dirOf7z+" a -t7z "+fileNameFor7z+" -mx="+mx+" -mhe="+mhe+" "+fileNameForAss+" "+fileNameForXml,shell=True)
 
 
 if __name__ == '__main__':
@@ -129,12 +130,10 @@ if __name__ == '__main__':
                     mhe="on"
                     Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe)
                     
-                    
-                    for assfoldName, asssubfolders, assfilenames in walk(myPath):     #用os.walk方法取得path路径下的文件夹路径，子文件夹名，所有文件名
-                        for assfilename in assfilenames:                         #遍历列表下的所有文件名
-                            if assfilename.endswith('.ass'):                #当文件名以.png后缀结尾时
-                                remove(myPath.join(assfilename))    #删除符合条件的文件
-                                print("{} deleted.".format(assfilename))
+                    assfileName=myPath+"\\"+getFileName1(myPath,".ass")[0]+".ass"
+                    xmlfileName=myPath+"\\"+getFileName1(myPath,".xml")[0]+".xml"
+                    remove(assfileName)
+                    remove(xmlfileName)
                     #remove(fileNameForAss)
                     #remove(fileNameForXml)
                 except Exception as e2:
