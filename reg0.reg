@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00 
+[HKEY_CLASSES_ROOT\bilibilidownload]
+@="bilibilidownload"
+"URL Protocol"="D:\\BilibiliDownloadTools\\dist\\BD\\BD.exe"
+[HKEY_CLASSES_ROOT\bilibilidownload\DefaultIcon]
+@="D:\\BilibiliDownloadTools\\dist\\BD\\BD.exe,1"
+[HKEY_CLASSES_ROOT\bilibilidownload\shell]
+@="open"
+[HKEY_CLASSES_ROOT\bilibilidownload\shell\open]
+@="open"
+[HKEY_CLASSES_ROOT\bilibilidownload\shell\open\command]
+@="\"D:\\BilibiliDownloadTools\\dist\\BD\\BD.exe\" \"%1\""
