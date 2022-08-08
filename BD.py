@@ -1,4 +1,4 @@
-from os import listdir,path,rename,mkdir,remove,walk
+from os import listdir,path,rename,mkdir,remove
 from re import sub
 from requests import get
 from requests import get
