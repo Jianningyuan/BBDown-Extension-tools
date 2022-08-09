@@ -1,7 +1,6 @@
 from os import listdir,path,rename,mkdir,remove
 from re import sub
 from requests import get
-from requests import get
 from json import dumps,loads
 from time import sleep
 from subprocess import call
@@ -77,9 +76,8 @@ def Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe):
     call(dirOf7z+" a -t7z "+fileNameFor7z+" -mx="+mx+" -mhe="+mhe+" "+fileNameForAss+" "+fileNameForXml,shell=True)
 
 
-if __name__ == '__main__':
+def DownLoad(para1):
     para2=str(1)
-    para1 = input("请输入要下载视频的BV号: ")
     findVideo=bv2av(para1)
     findVideo=FindVideo(findVideo)
     if str(findVideo)=="0":
@@ -125,5 +123,5 @@ if __name__ == '__main__':
                 except Exception as e2:
                     print(e2)
     else:
-        print("视频不存在！")
-        sleep(1)
+        a="视频不存在！"
+        return a
