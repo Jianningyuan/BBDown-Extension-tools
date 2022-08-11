@@ -2,7 +2,6 @@ from os import listdir,path,rename,mkdir,remove
 from re import sub
 from requests import get
 from json import dumps,loads
-from time import sleep
 from subprocess import call
 
 
@@ -76,21 +75,17 @@ def Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe):
     call(dirOf7z+" a -t7z "+fileNameFor7z+" -mx="+mx+" -mhe="+mhe+" "+fileNameForAss+" "+fileNameForXml,shell=True)
 
 
-def DownLoad(para1):
-    para2=str(1)
+
+def DownLoadInit(para1):
     findVideo=bv2av(para1)
     findVideo=FindVideo(findVideo)
+    return findVideo
+def DownLoad(para1):
+    para2=str(1)
+    findVideo=DownLoadInit(para1)
     if str(findVideo)=="0":
         if ngp(para1) == "1":
             para2=str(1)
-        else:
-            para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
-        if "," in para2 or "-" in para2 or "ALL" in para2:
-            try:
-                MultiVidieoDownload(para1,"D:\\BilibiliDownloadFile",para2)
-            except Exception as e1:
-                print(e1)
-        else:
             try:
                 SingleVideoDownload(para1,"D:\\BilibiliDownloadFile\\Temporary",para2)
             except Exception as e:
@@ -122,6 +117,9 @@ def DownLoad(para1):
                     remove(xmlfileName)
                 except Exception as e2:
                     print(e2)
-    else:
-        a="视频不存在！"
-        return a
+        else:
+            para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
+            try:
+                MultiVidieoDownload(para1,"D:\\BilibiliDownloadFile",para2)
+            except Exception as e1:
+                print(e1)
