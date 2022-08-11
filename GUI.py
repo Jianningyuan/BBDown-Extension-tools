@@ -7,6 +7,7 @@ from BD import *
 from threading import Thread
 
 win=Tk()
+win.resizable(False,False)
 win.iconbitmap('favicon.ico')
 win.title("B站视频下载器")
 set_theme("dark")
