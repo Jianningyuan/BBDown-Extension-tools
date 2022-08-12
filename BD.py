@@ -1,8 +1,8 @@
-from os import listdir,path,rename,mkdir,remove
+from json import dumps, loads
+from os import listdir, mkdir, path, remove, rename
 from re import sub
-from requests import get
-from json import dumps,loads
 from subprocess import call
+from requests import get
 
 
 # bv2av用于bv号转av号
@@ -75,12 +75,28 @@ def Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe):
     call(dirOf7z+" a -t7z "+fileNameFor7z+" -mx="+mx+" -mhe="+mhe+" "+fileNameForAss+" "+fileNameForXml,shell=True)
 
 
-
 def DownLoadInit(para1):
     findVideo=bv2av(para1)
     findVideo=FindVideo(findVideo)
     return findVideo
-def DownLoad(para1):
+
+
+def ListFilesToTxt(dir, file, wildcard, recursion):
+    exts = wildcard.split(" ")
+    files = listdir(dir)
+    for name in files:
+        fullname = path.join(dir, name)
+        if (path.isdir(fullname) & recursion):
+            ListFilesToTxt(fullname, file, wildcard, recursion)
+        else:
+            for ext in exts:
+                if (name.endswith(ext)):
+                    # file.write(name + "\n")
+                    print(name)
+                    break
+
+
+def DownLoad(para1,P):
     para2=str(1)
     findVideo=DownLoadInit(para1)
     if str(findVideo)=="0":
@@ -118,7 +134,7 @@ def DownLoad(para1):
                 except Exception as e2:
                     print(e2)
         else:
-            para2 = input("请输入下载视频的P数(如8 或1,2 或3-5 或ALL):")
+            para2 = P
             try:
                 MultiVidieoDownload(para1,"D:\\BilibiliDownloadFile",para2)
             except Exception as e1:
