@@ -89,21 +89,6 @@ def DownLoadInit(para1):
     return findVideo
 
 
-def ListFilesToTxt(dir, file, wildcard, recursion):
-    exts = wildcard.split(" ")
-    files = listdir(dir)
-    for name in files:
-        fullname = path.join(dir, name)
-        if (path.isdir(fullname) & recursion):
-            ListFilesToTxt(fullname, file, wildcard, recursion)
-        else:
-            for ext in exts:
-                if (name.endswith(ext)):
-                    # file.write(name + "\n")
-                    print(name)
-                    break
-
-
 def DownLoad(para1,P):
     global ConfigOfBBDown
     ConfigOfBBDown=GetConfig("DefaultDirectory","BBDownDirectory")
