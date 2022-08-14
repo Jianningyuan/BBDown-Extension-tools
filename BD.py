@@ -4,7 +4,8 @@ from re import sub
 from subprocess import call
 from requests import get
 import configparser as ConfigParser
-
+from win32api import SetFileAttributes
+from win32con import FILE_ATTRIBUTE_HIDDEN,FILE_ATTRIBUTE_NORMAL
 
 def GetConfig(section, key):
     config = ConfigParser.ConfigParser()
@@ -76,6 +77,7 @@ def MultiVidieoDownload(BV,workDir,P):
 def SingleVideoDownload(BV,workDir,P):
     # call("@echo off")
     mkdir(workDir)#"D:\BilibiliDownloadFile\Temporary")
+    SetFileAttributes(workDir,FILE_ATTRIBUTE_HIDDEN)
     call(ConfigOfBBDown+" "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
 
 
@@ -113,6 +115,7 @@ def DownLoad(para1,P):
                 fileName=fileName[0]
                 fileName=validateTitle(fileName)
                 rename(ConfigOfDownloadTheDefaultDirectory+"Temporary",ConfigOfDownloadTheDefaultDirectory+fileName)
+                SetFileAttributes(ConfigOfDownloadTheDefaultDirectory+fileName,FILE_ATTRIBUTE_NORMAL)
                 try:
                     dirOf7z=ConfigOfDirectoryOf7z
                     fileNameFor7z=ConfigOfDownloadTheDefaultDirectory+fileName+"\\DanmakuAndSubtitles.7z"

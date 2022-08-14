@@ -1,11 +1,10 @@
 from tkinter import Label, Tk
 from tkinter.ttk import Entry,Button
-from tkinter.messagebox import showerror
+from tkinter.messagebox import showerror,showinfo
 from sv_ttk import set_theme,use_dark_theme
 import ctypes
 from BD import *
 from threading import Thread
-
 
 win=Tk()
 win.resizable(False,False)
@@ -22,7 +21,7 @@ def SplitTextAndCompareNumber(text,splitChar,compareNumber):
     splitTextArr=str(text).split(str(splitChar))
     for i in splitTextArr:
         if i=="":
-            return "No"
+            return False
     resultOfsplitText=splitTextArr[len(splitTextArr)-1]
     if int(resultOfsplitText)<=int(compareNumber):
         return True
@@ -46,7 +45,6 @@ def VerifyThatTheInputIsLegitimateOfP(legitimateOfP):
                     if str(ord(i)) in listOfPOrd:
                         pass
                     else:
-                        # print(type(ord(i)))
                         return False
                 if "," in text:
                     #查看“，”后的数值是否小于等于legitimate
@@ -84,12 +82,11 @@ def ThreadOfDownloadMultiP():
     if VerifyThatTheInputIsLegitimateOfP(ngp(BV))==True:
         tOfMulti=Thread(target=DownLoad, args=(BV,P))
         tOfMulti.start()
+        showinfo("信息","开始下载!")
         win.destroy()
         tOfMulti.join()
-    elif VerifyThatTheInputIsLegitimateOfP(ngp(BV))=="No":
-        showerror("警告","P数输入有误!")
     else:
-        showerror("警告","P数超出范围!")
+        showerror("警告","P数超出范围或输入有误!")
 
 
 def RunThreadOfDownloadMultiP(self):
