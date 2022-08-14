@@ -3,6 +3,14 @@ from os import listdir, mkdir, path, remove, rename
 from re import sub
 from subprocess import call
 from requests import get
+import configparser as ConfigParser
+
+
+def GetConfig(section, key):
+    config = ConfigParser.ConfigParser()
+    pathOfConfig = path.split(path.realpath(__file__))[0] + '/BD.config'
+    config.read(pathOfConfig)
+    return config.get(section, key)
 
 
 # bv2av用于bv号转av号
@@ -62,13 +70,13 @@ def ngp(bvid): #B站获取视频信息的api
 
 
 def MultiVidieoDownload(BV,workDir,P):
-    call("D:\\BilibiliDownloadTools\\BBDown_win-x64\\BBDown.exe "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
+    call(ConfigOfBBDown+" "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
 
 
 def SingleVideoDownload(BV,workDir,P):
     # call("@echo off")
     mkdir(workDir)#"D:\BilibiliDownloadFile\Temporary")
-    call("D:\\BilibiliDownloadTools\\BBDown_win-x64\\BBDown.exe "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
+    call(ConfigOfBBDown+" "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
 
 
 def Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe):
@@ -97,32 +105,35 @@ def ListFilesToTxt(dir, file, wildcard, recursion):
 
 
 def DownLoad(para1,P):
+    global ConfigOfBBDown
+    ConfigOfBBDown=GetConfig("DefaultDirectory","BBDownDirectory")
+    ConfigOfDownloadTheDefaultDirectory=GetConfig("DefaultDirectory","DownloadTheDefaultDirectory")
+    ConfigOfDirectoryOf7z=GetConfig("DefaultDirectory","DirectoryOf7z")
     para2=str(1)
     findVideo=DownLoadInit(para1)
     if str(findVideo)=="0":
         if ngp(para1) == "1":
             para2=str(1)
             try:
-                SingleVideoDownload(para1,"D:\\BilibiliDownloadFile\\Temporary",para2)
+                SingleVideoDownload(para1,ConfigOfDownloadTheDefaultDirectory+"Temporary",para2)
             except Exception as e:
                 print(e)
-                print("_________")
-            Files=listdir("D:\\BilibiliDownloadFile\\Temporary")
+            Files=listdir(ConfigOfDownloadTheDefaultDirectory+"Temporary")
             for k in range(len(Files)):
                 Files[k]=path.splitext(Files[k])[1]# 提取文件夹内所有文件的后缀
             Str2=['.mp4']
             if len(list(set(Str2).intersection(set(Files))))==len(Str2):
                 #有MP4
-                fileName=getFileName1("D:\BilibiliDownloadFile\Temporary",".mp4")
+                fileName=getFileName1(ConfigOfDownloadTheDefaultDirectory+"Temporary",".mp4")
                 fileName=fileName[0]
                 fileName=validateTitle(fileName)
-                rename("D:\BilibiliDownloadFile\Temporary","D:\BilibiliDownloadFile\\"+fileName)
+                rename(ConfigOfDownloadTheDefaultDirectory+"Temporary",ConfigOfDownloadTheDefaultDirectory+fileName)
                 try:
-                    dirOf7z="\"C:\\Program Files\\7-Zip\\7z.exe\""
-                    fileNameFor7z="D:\\BilibiliDownloadFile\\"+fileName+"\\DanmakuAndSubtitles.7z"
-                    fileNameForAss="D:\\BilibiliDownloadFile\\"+fileName+"\\*.ass"
-                    fileNameForXml="D:\\BilibiliDownloadFile\\"+fileName+"\\*.xml"
-                    myPath="D:\\BilibiliDownloadFile\\"+fileName
+                    dirOf7z=ConfigOfDirectoryOf7z
+                    fileNameFor7z=ConfigOfDownloadTheDefaultDirectory+fileName+"\\DanmakuAndSubtitles.7z"
+                    fileNameForAss=ConfigOfDownloadTheDefaultDirectory+fileName+"\\*.ass"
+                    fileNameForXml=ConfigOfDownloadTheDefaultDirectory+fileName+"\\*.xml"
+                    myPath=ConfigOfDownloadTheDefaultDirectory+fileName
                     mx="9"
                     mhe="on"
                     Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe)
@@ -136,6 +147,6 @@ def DownLoad(para1,P):
         else:
             para2 = P
             try:
-                MultiVidieoDownload(para1,"D:\\BilibiliDownloadFile",para2)
+                MultiVidieoDownload(para1,ConfigOfDownloadTheDefaultDirectory,para2)
             except Exception as e1:
                 print(e1)
