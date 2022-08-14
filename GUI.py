@@ -1,4 +1,4 @@
-from tkinter import Label, Tk
+from tkinter import Label, Tk, END
 from tkinter.ttk import Entry,Button
 from tkinter.messagebox import showerror,showinfo
 from sv_ttk import set_theme,use_dark_theme
@@ -63,7 +63,7 @@ def VerifyThatTheInputIsLegitimateOfP(legitimateOfP):
 def ThreadsOfDownload1P(BV):
         t1 = Thread(target=DownLoad, args=(BV,1))
         t1.start()
-        win.destroy()
+        buttonOfBV.grid(row=2,column=0)
         t1.join()  # join() 等待线程终止，要不然一直挂起
 
 
@@ -82,9 +82,14 @@ def ThreadOfDownloadMultiP():
     if VerifyThatTheInputIsLegitimateOfP(ngp(BV))==True:
         tOfMulti=Thread(target=DownLoad, args=(BV,P))
         tOfMulti.start()
-        showinfo("信息","开始下载!")
-        win.destroy()
         tOfMulti.join()
+        lab.grid_forget()
+        entryOfP.grid_forget()
+        entry.config(state="enable")
+        entry.delete(0,END)
+        bu1.grid_forget()
+        Butt.grid(row=3,column=0)
+        buttonOfBV.grid(row=4,column=0)
     else:
         showerror("警告","P数超出范围或输入有误!")
 
@@ -93,16 +98,20 @@ def RunThreadOfDownloadMultiP(self):
     ThreadOfDownloadMultiP()
 
 def Show():
+    global lab
     strbvid=entry.get()
     if str(len(strbvid))=="12":
         yesAndNoOfVideo=DownLoadInit(strbvid)
         if str(yesAndNoOfVideo) == "0":   #有无视频
             if ngp(strbvid) == "1":       #是否为1p
                 ThreadsOfDownload1P(strbvid)
+                entry.delete(0,END)
             else:
                 entry.config(state='disable')
-                Butt.destroy()
-                Label(win,text="请输入下载视频的P数(如8 或1,2 或3-5 或ALL)").grid(row=1,column=0)
+                Butt.grid_forget()
+                buttonOfBV.grid_forget()
+                lab=Label(win,text="请输入下载视频的P数(如8 或1,2 或3-5 或ALL)")
+                lab.grid(row=1,column=0)
                 entryOfP.grid(row=2,column=0)
                 bu1.grid(row=3,column=0)
         else:
@@ -111,7 +120,12 @@ def Show():
         showerror("警告","BV号不正确!")
 
 
+def ExitOfWindow():
+    win.destroy()
+
+
 bu1=Button(win,text="下载",command=ThreadOfDownloadMultiP)
+buttonOfBV=Button(win,text="取消",command=ExitOfWindow)
 entryOfP=Entry(win)
 entryOfP.bind("<Return>",RunThreadOfDownloadMultiP)
 entry=Entry(win)
