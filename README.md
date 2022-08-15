@@ -24,4 +24,4 @@ https://github.com/Jianningyuan/bilibili-API-collect
 
 VisualStudio Code
 
-![QQ图片20220815165809](https://user-images.githubusercontent.com/102419562/184606761-898fb57a-9673-43f2-9e57-ac37c477c63f.png)
+![VS Code](https://user-images.githubusercontent.com/102419562/184606958-03e6e83d-4d7f-4e58-8ed6-5739ba49527b.png)
