@@ -19,6 +19,7 @@ win.tk.call('tk', 'scaling', ScaleFactor/40)
 
 def SplitTextAndCompareNumber(text,splitChar,compareNumber):
     splitTextArr=str(text).split(str(splitChar))
+    splitTextArr.sort()
     for i in splitTextArr:
         if i=="":
             return False
@@ -33,8 +34,8 @@ def VerifyThatTheInputIsLegitimateOfP(legitimateOfP):
     text=entryOfP.get()
     if text:
         try:
-            int(text)
-            if text<=legitimateOfP:
+            num=int(text)
+            if num<=int(legitimateOfP):
                 return True
             else:
                 return False
