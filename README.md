@@ -1,5 +1,5 @@
 # BBDown-GUI
-一个可选功能不是很全的B站视频下载器，需要自行准备BBDown.exe
+一个可选功能不是很全的BBDownGUI，需要自行准备BBDown.exe
 
 请在程序根目录添加icon.ico文件，否则会报错
 请自行修改BD.config文件：
