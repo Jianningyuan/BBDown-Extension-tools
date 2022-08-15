@@ -20,4 +20,8 @@ https://github.com/nilaoda/BBDown
 https://github.com/Jianningyuan/bilibili-API-collect
 
 特别鸣谢：
-由Microsoft开发的VS Code
+由Microsoft开发的开发工具
+
+VisualStudio Code
+
+![QQ图片20220815165809](https://user-images.githubusercontent.com/102419562/184606761-898fb57a-9673-43f2-9e57-ac37c477c63f.png)
