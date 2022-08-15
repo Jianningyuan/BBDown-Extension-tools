@@ -11,7 +11,7 @@
 	
   第三行为下载的目标目录，请自行更改（默认为C:\BilibiliDownloadFile)
 	
-  第四行为7 zip的目录（不会支持WinRAR）
+  第四行为7 zip的目录（不支持WinRAR）
 	
   
 不提供二进制文件
