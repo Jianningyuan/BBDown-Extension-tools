@@ -22,6 +22,6 @@ https://github.com/Jianningyuan/bilibili-API-collect
 特别鸣谢：
 由Microsoft开发的开发工具
 
-VisualStudio Code
+Visual Studio Code
 
 ![VS Code](https://user-images.githubusercontent.com/102419562/184607157-05d3a3b7-74ac-4829-88c0-30d2bf34b253.png)
