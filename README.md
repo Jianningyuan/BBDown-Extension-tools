@@ -6,7 +6,7 @@
   第一行不要改
   第二行最好不要改（为BBDown.exe的路径）
   第三行为下载的目标目录，请自行更改（默认为C:\BilibiliDownloadFile)
-  第四行为7 zip的目录（不会支持WinRAR（永远!））
+  第四行为7 zip的目录（不会支持WinRAR）
 
 感谢名单：
 https://github.com/nilaoda/BBDown
