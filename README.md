@@ -16,13 +16,13 @@
   
 不提供二进制文件
 
-感谢名单：
+## 感谢名单：
 
 https://github.com/nilaoda/BBDown
 
 https://github.com/Jianningyuan/bilibili-API-collect
 
-特别鸣谢：
+## 特别鸣谢：
 由Microsoft开发的开发工具
 
 Visual Studio Code
