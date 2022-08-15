@@ -7,7 +7,7 @@
 
   第一行不要改
 	
-  第二行为BBDown.exe的路径
+  第二行为BBDown.exe的路径(可为相对路径或绝对路径)
 	
   第三行为下载的目标目录，请自行更改（默认为C:\BilibiliDownloadFile)
 	
