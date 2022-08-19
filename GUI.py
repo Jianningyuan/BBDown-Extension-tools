@@ -124,14 +124,14 @@ def Show():
 def ExitOfWindow():
     win.destroy()
 
-
-bu1=Button(win,text="下载",command=ThreadOfDownloadMultiP)
-buttonOfBV=Button(win,text="取消",command=ExitOfWindow)
-entryOfP=Entry(win)
-entryOfP.bind("<Return>",RunThreadOfDownloadMultiP)
-entry=Entry(win)
-entry.grid(row=0)
-Butt=Button(win,text="下载",command=Show)
-Butt.grid(row=1,column=0)
-entry.bind("<Return>",RunShow)
-win.mainloop()
+if __name__ == '__main__':
+    bu1=Button(win,text="下载",command=ThreadOfDownloadMultiP)
+    buttonOfBV=Button(win,text="取消",command=ExitOfWindow)
+    entryOfP=Entry(win)
+    entryOfP.bind("<Return>",RunThreadOfDownloadMultiP)
+    entry=Entry(win)
+    entry.grid(row=0)
+    Butt=Button(win,text="下载",command=Show)
+    Butt.grid(row=1,column=0)
+    entry.bind("<Return>",RunShow)
+    win.mainloop()
