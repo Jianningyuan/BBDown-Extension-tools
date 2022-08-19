@@ -8,7 +8,10 @@
 - 第三行为下载的目标目录，请自行更改（**默认为C:\BilibiliDownloadFile**)  
 - 第四行为7 zip的目录(**不支持WinRAR**)   
 以下为BD.config的实例
->2e
+  [DefaultDirectory]
+  BBDownDirectory=BBDown_win-x64\BBDown.exe
+  DownloadTheDefaultDirectory=D:\BilibiliDownloadFile\
+  DirectoryOf7z=C:\Program Files\7-Zip\7z.exe
 **不提供二进制文件**
 
 ## 感谢名单：
