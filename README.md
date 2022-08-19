@@ -7,7 +7,9 @@
 - 第二行为BBDown.exe的路径(**可为相对路径或绝对路径**)   
 - 第三行为下载的目标目录，请自行更改（**默认为C:\BilibiliDownloadFile**)  
 - 第四行为7 zip的目录(**不支持WinRAR**)   
-- **不提供二进制文件**
+以下为BD.config的实例
+>2e
+**不提供二进制文件**
 
 ## 感谢名单：
 https://github.com/nilaoda/BBDown  
