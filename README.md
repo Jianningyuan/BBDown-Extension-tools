@@ -10,11 +10,12 @@
 
 以下为一个BD.config的实例:   
   ```
-  [DefaultDirectory]  
-  BBDownDirectory=BBDown_win-x64\BBDown.exe  
-  DownloadTheDefaultDirectory=D:\BilibiliDownloadFile\  
+  [DefaultDirectory]
+  BBDownDirectory=BBDown_win-x64\BBDown.exe
+  DownloadTheDefaultDirectory=D:\BilibiliDownloadFile\
   DirectoryOf7z=C:\Program Files\7-Zip\7z.exe
   ```
+
 **不提供二进制文件**
 
 ## 感谢名单：
