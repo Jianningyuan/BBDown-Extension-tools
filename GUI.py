@@ -1,9 +1,9 @@
 from tkinter import Label, Tk, END
 from tkinter.ttk import Entry,Button
-from tkinter.messagebox import showerror,showinfo
+from tkinter.messagebox import showwarning
 from sv_ttk import set_theme,use_dark_theme
 import ctypes
-from BD import *
+from BD import DownLoad, ngp, DownLoadInit
 from threading import Thread
 
 win=Tk()
@@ -92,7 +92,7 @@ def ThreadOfDownloadMultiP():
         Butt.grid(row=3,column=0)
         buttonOfBV.grid(row=4,column=0)
     else:
-        showerror("警告","P数超出范围或输入有误!")
+        showwarning("警告","P数超出范围或输入有误!")
 
 
 def RunThreadOfDownloadMultiP(self):
@@ -116,9 +116,9 @@ def Show():
                 entryOfP.grid(row=2,column=0)
                 bu1.grid(row=3,column=0)
         else:
-            showerror("错误","视频不存在!")
+            showwarning("警告","视频不存在!")
     else:
-        showerror("警告","BV号不正确!")
+        showwarning("警告","BV号不正确!")
 
 
 def ExitOfWindow():
