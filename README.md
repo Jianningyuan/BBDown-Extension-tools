@@ -13,6 +13,7 @@
 https://github.com/nilaoda/BBDown  
 https://github.com/Jianningyuan/bilibili-API-collect
 ## 特别鸣谢：
-由Microsoft开发的开发工具  
+由Microsoft提供的独立源代码编辑器  
 **VSCode**  
+
 ![VSCode](https://user-images.githubusercontent.com/102419562/184617892-8f1d0fed-34b0-44cc-b7c3-cab19a5d23f6.png)
