@@ -96,6 +96,10 @@ def DownLoad(para1,P):
     ConfigOfBBDown=GetConfig("DefaultDirectory","BBDownDirectory")
     ConfigOfDownloadTheDefaultDirectory=GetConfig("DefaultDirectory","DownloadTheDefaultDirectory")
     ConfigOfDirectoryOf7z=GetConfig("DefaultDirectory","DirectoryOf7z")
+    if not ConfigOfDirectoryOf7z or ConfigOfDirectoryOf7z=="False":
+        pass
+    else:
+        ConfigOfDirectoryOf7z="\""+ConfigOfDirectoryOf7z+"\""
     para2=str(1)
     findVideo=DownLoadInit(para1)
     if str(findVideo)=="0":
@@ -116,22 +120,26 @@ def DownLoad(para1,P):
                 fileName=validateTitle(fileName)
                 rename(ConfigOfDownloadTheDefaultDirectory+"Temporary",ConfigOfDownloadTheDefaultDirectory+fileName)
                 SetFileAttributes(ConfigOfDownloadTheDefaultDirectory+fileName,FILE_ATTRIBUTE_NORMAL)
-                try:
-                    dirOf7z=ConfigOfDirectoryOf7z
-                    fileNameFor7z=ConfigOfDownloadTheDefaultDirectory+fileName+"\\DanmakuAndSubtitles.7z"
-                    fileNameForAss=ConfigOfDownloadTheDefaultDirectory+fileName+"\\*.ass"
-                    fileNameForXml=ConfigOfDownloadTheDefaultDirectory+fileName+"\\*.xml"
-                    myPath=ConfigOfDownloadTheDefaultDirectory+fileName
-                    mx="9"
-                    mhe="on"
-                    Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe)
-                    
-                    assfileName=myPath+"\\"+getFileName1(myPath,".ass")[0]+".ass"
-                    xmlfileName=myPath+"\\"+getFileName1(myPath,".xml")[0]+".xml"
-                    remove(assfileName)
-                    remove(xmlfileName)
-                except Exception as e2:
-                    print(e2)
+                if not ConfigOfDirectoryOf7z or ConfigOfDirectoryOf7z == "False":
+                    pass
+                else:
+                    print(ConfigOfDirectoryOf7z)
+                    try:
+                        dirOf7z=ConfigOfDirectoryOf7z
+                        fileNameFor7z=ConfigOfDownloadTheDefaultDirectory+fileName+"\\DanmakuAndSubtitles.7z"
+                        fileNameForAss=ConfigOfDownloadTheDefaultDirectory+fileName+"\\*.ass"
+                        fileNameForXml=ConfigOfDownloadTheDefaultDirectory+fileName+"\\*.xml"
+                        myPath=ConfigOfDownloadTheDefaultDirectory+fileName
+                        mx="9"
+                        mhe="on"
+                        Compress(dirOf7z,fileNameFor7z,fileNameForAss,fileNameForXml,mx,mhe)
+                        
+                        assfileName=myPath+"\\"+getFileName1(myPath,".ass")[0]+".ass"
+                        xmlfileName=myPath+"\\"+getFileName1(myPath,".xml")[0]+".xml"
+                        remove(assfileName)
+                        remove(xmlfileName)
+                    except Exception as e2:
+                        print(e2)
         else:
             para2 = P
             try:
