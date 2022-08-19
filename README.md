@@ -7,6 +7,7 @@
 - 第二行为BBDown.exe的路径(**可为相对路径或绝对路径**)   
 - 第三行为下载的目标目录，请自行更改（**默认为C:\BilibiliDownloadFile**)  
 - 第四行为7 zip的目录(**不支持WinRAR**)   
+
 以下为一个BD.config的实例:   
   ```
   [DefaultDirectory]  
