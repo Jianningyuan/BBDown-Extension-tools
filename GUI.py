@@ -3,7 +3,7 @@ from tkinter.ttk import Entry,Button
 from tkinter.messagebox import showwarning
 from sv_ttk import set_theme,use_dark_theme
 import ctypes
-from BD import *
+from BD import DownLoad, ngp, DownLoadInit
 from threading import Thread
 
 win=Tk()
