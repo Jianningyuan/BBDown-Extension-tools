@@ -1,4 +1,4 @@
-# BBDown-GUI
+# BBDown-Extension-tools
 **一个可选功能完全没有的垃圾的BBDownGUI实现(可通过BBDown.config实现配置)，但有输入校验与文件自动整理功能，需要自行准备BBDown.exe**
 
 - **请在程序根目录添加icon.ico文件，否则会报错**   
