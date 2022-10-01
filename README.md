@@ -26,3 +26,19 @@ https://github.com/Jianningyuan/bilibili-API-collect
 **VSCode**  
 
 ![VSCode](https://user-images.githubusercontent.com/102419562/184617892-8f1d0fed-34b0-44cc-b7c3-cab19a5d23f6.png)
+
+**An optional function completely does not have the garbage BBDownGUI implementation (can be configured through BBDown.config), but there is input verification and file automatic sorting function, you need to prepare your own BBDown.exe**
+
+- **Please add the icon .ico file in the root directory of the program, otherwise an error will be reported**
+- Please modify the BD.config file yourself:
+- **Do not change the first line**
+- The path of the second line BBDown.exe (**can be relative or absolute**)
+- The third line downloads the target directory, please change it yourself (default is **C:BilibiliDownloadFile**)
+- Fourth line 7 zip directory (WinRAR is not supported) (**False can be written after the equal sign of this line or blank after the equal sign to not compress, but leave the equal sign in front of it**)
+The following is an example of BD.config:  
+  ```
+  [DefaultDirectory]
+  BBDownDirectory=BBDown_win-x64\BBDown.exe
+  DownloadTheDefaultDirectory=D:\BilibiliDownloadFile\
+  DirectoryOf7z=C:\Program Files\7-Zip\7z.exe
+  ```
