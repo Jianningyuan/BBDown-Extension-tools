@@ -34,7 +34,7 @@ https://github.com/Jianningyuan/bilibili-API-collect
 - **Do not change the first line**
 - The path of the second line BBDown.exe (**can be relative or absolute**)
 - The third line downloads the target directory, please change it yourself (default is **C:BilibiliDownloadFile**)
-- Fourth line 7 zip directory (WinRAR is not supported) (**False can be written after the equal sign of this line or blank after the equal sign to not compress, but leave the equal sign in front of it**)
+- Fourth line 7 zip directory (WinRAR is not supported) (**False can be written after the equal sign of this line or blank after the equal sign to not compress, but leave the equal sign in front of it**)  
 The following is an example of BD.config:  
   ```
   [DefaultDirectory]
