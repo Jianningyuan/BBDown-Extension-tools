@@ -16,8 +16,6 @@
   DirectoryOf7z=C:\Program Files\7-Zip\7z.exe
   ```
 
-**不提供二进制文件**
-
 ## 感谢名单：
 https://github.com/nilaoda/BBDown  
 https://github.com/Jianningyuan/bilibili-API-collect
