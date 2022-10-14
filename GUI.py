@@ -1,7 +1,6 @@
 from tkinter import Label, Tk, END
-from tkinter.ttk import Entry,Button
+from tkinter.ttk import Entry,Button,Style
 from tkinter.messagebox import showwarning
-from sv_ttk import set_theme,use_dark_theme
 import ctypes
 from BD import DownLoad, ngp, DownLoadInit
 from threading import Thread
@@ -10,11 +9,9 @@ win=Tk()
 win.resizable(False,False)
 win.iconbitmap('icon.ico')
 win.title("B站视频下载器")
-set_theme("dark")
-use_dark_theme()
 ctypes.windll.shcore.SetProcessDpiAwareness(1)
 ScaleFactor=ctypes.windll.shcore.GetScaleFactorForDevice(0)
-win.tk.call('tk', 'scaling', ScaleFactor/40)
+win.tk.call('tk', 'scaling', ScaleFactor/30)
 
 
 def SplitTextAndCompareNumber(text,splitChar,compareNumber):
@@ -55,6 +52,8 @@ def VerifyThatTheInputIsLegitimateOfP(legitimateOfP):
                     #查看“-”后的数值是否小于等于legitimate
                     resultOfHengGang=SplitTextAndCompareNumber(text,"-",legitimateOfP)    # 返回值合法为Ture，不合法为False
                     return resultOfHengGang
+                elif text=="all" or text=="ALL":
+                    return True
             else:
                 return False
     else:
