@@ -34,7 +34,7 @@
 2. 自动识别非法BV号与P数
 
 # 使用方法
-1. 下载[BBDown](https://github.com/nilaoda/BBDown)(**最好为最新action**)
+1. 下载[BBDown](https://github.com/nilaoda/BBDown)(**最好为最新[Action](https://github.com/nilaoda/BBDown/actions)**)
 2. 在电脑上安装好[Python](https://www.python.org/downloads/)的最新版本
 3. 下载本项目源代码
 4. 把BBdown拷贝入源代码根目录
