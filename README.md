@@ -84,3 +84,17 @@ The following is an example of BD.config:
 - requests
 - configparser
 - pywin32
+
+#
+1. Download BBDown (preferably the latest Action)
+2. Install the latest version of Python on your computer
+3. Download the source code for this project
+4. Install the above modules (some modules come with Python and do not need to be installed)
+5. Copy BBdown into the source code root
+6. Add the BBDown.config file to the root directory
+7. Modify the directory of the second line of the BBDown program
+8. Modify the third line of the download destination path (if the working directory of BBDown is set, it must be the same as the working directory, otherwise it is in the path where the BBDown .exe is located)
+9. Add icon .ico file to the root directory, the content is arbitrary
+10.Double-click GUI.py to start running
+
+(**If you have any usage questions, please go to the Issues page or modify the code yourself.) The author himself is busy, and fixing bugs is very slow**)
