@@ -92,8 +92,8 @@ The following is an example of BD.config:
 2. Automatic identification of illegal BV numbers and P numbers
 
 ## How to use
-1. Download BBDown (preferably the latest Action)
-2. Install the latest version of Python on your computer
+1. Download [BBDown](https://github.com/nilaoda/BBDown) (preferably the latest [Action](https://github.com/nilaoda/BBDown/actions))
+2. Install the latest version of [Python](https://www.python.org/downloads/) on your computer
 3. Download the source code for this project
 4. Install the above modules (some modules come with Python and do not need to be installed)
 5. Copy BBdown into the source code root
