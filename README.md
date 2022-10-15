@@ -27,6 +27,9 @@
 - requests
 - configparser
 - pywin32
+# 使用效果
+1. 在下载完视频后自动把文件归类入对应的文件夹内，而无需手动处理
+2. 自动识别非法BV号与P数
 
 # 使用方法
 1. 下载[BBDown](https://github.com/nilaoda/BBDown)(**最好为最新action**)
