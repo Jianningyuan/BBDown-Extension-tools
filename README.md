@@ -16,6 +16,18 @@
   DirectoryOf7z=C:\Program Files\7-Zip\7z.exe
   ```
 **不再提供二进制文件，请自行编译**
+**需要使用的模块如下：**
+- ctypes
+- tkinter
+- threading
+- json
+- re
+- os
+- subprocess
+- requests
+- configparser
+- pywin32
+
 ## 感谢名单：
 https://github.com/nilaoda/BBDown  
 https://github.com/Jianningyuan/bilibili-API-collect
