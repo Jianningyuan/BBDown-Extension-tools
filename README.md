@@ -27,13 +27,14 @@
 - requests
 - configparser
 - pywin32
+
 # 使用效果
 1. 在下载完视频后自动把文件归类入对应的文件夹内，而无需手动处理
 2. 自动识别非法BV号与P数
 
 # 使用方法
 1. 下载[BBDown](https://github.com/nilaoda/BBDown)(**最好为最新action**)
-2. 在电脑上安装好python的最新版本
+2. 在电脑上安装好[Python](https://www.python.org/downloads/)的最新版本
 3. 下载本项目源代码
 4. 把BBdown拷贝入源代码根目录
 5. 在根目录添加BBDown.config文件
@@ -41,6 +42,7 @@
 7. 修改第三行下载目标路径(**如果设置了BBDown的工作目录则要与工作目录相同，否则就在BBDown.exe的所在路径**)
 8. 在根目录添加icon.ico文件，内容随意
 9. 双击GUI.py即可开始运行
+(**如有任何使用问题请移步Issues页面提问或自行修改代码。作者本人繁忙，修BUG很慢**)
 
 ## 感谢名单：
 https://github.com/nilaoda/BBDown  
