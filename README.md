@@ -55,7 +55,9 @@
 **VSCode**  
 
 ![VSCode](https://user-images.githubusercontent.com/102419562/184617892-8f1d0fed-34b0-44cc-b7c3-cab19a5d23f6.png)
-# BBDown-Extension-tools
+
+
+## BBDown-Extension-tools
 **An optional function completely does not have the garbage BBDownGUI implementation (can be configured through BBDown.config), but there is input verification and file automatic sorting function, you need to prepare your own BBDown.exe**
 
 - **Please add the icon .ico file in the root directory of the program, otherwise an error will be reported**
@@ -85,10 +87,11 @@ The following is an example of BD.config:
 - configparser
 - pywin32
 
-# Effects of using the software
+## Effects of using the software
 1. Files are automatically sorted into folders after downloading videos without manual processing
 2. Automatic identification of illegal BV numbers and P numbers
-# How to use
+
+## How to use
 1. Download BBDown (preferably the latest Action)
 2. Install the latest version of Python on your computer
 3. Download the source code for this project
