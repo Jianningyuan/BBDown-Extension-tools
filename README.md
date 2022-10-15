@@ -28,6 +28,17 @@
 - configparser
 - pywin32
 
+# 使用方法
+1. 下载[BBDown](https://github.com/nilaoda/BBDown)(**最好为最新action**)
+2. 在电脑上安装好python的最新版本
+3. 下载本项目源代码
+4. 把BBdown拷贝入源代码根目录
+5. 在根目录添加BBDown.config文件
+6. 修改第二行BBDown程序的目录
+7. 修改第三行下载目标路径(**如果设置了BBDown的工作目录则要与工作目录相同，否则就在BBDown.exe的所在路径**)
+8. 在根目录添加icon.ico文件，内容随意
+9. 双击GUI.py即可开始运行
+
 ## 感谢名单：
 https://github.com/nilaoda/BBDown  
 https://github.com/Jianningyuan/bilibili-API-collect
