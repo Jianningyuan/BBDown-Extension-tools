@@ -85,7 +85,7 @@ The following is an example of BD.config:
 - configparser
 - pywin32
 
-#
+# How to use
 1. Download BBDown (preferably the latest Action)
 2. Install the latest version of Python on your computer
 3. Download the source code for this project
