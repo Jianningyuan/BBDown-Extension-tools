@@ -85,6 +85,9 @@ The following is an example of BD.config:
 - configparser
 - pywin32
 
+# Effects of using the software
+1. Files are automatically sorted into folders after downloading videos without manual processing
+2. Automatic identification of illegal BV numbers and P numbers
 # How to use
 1. Download BBDown (preferably the latest Action)
 2. Install the latest version of Python on your computer
