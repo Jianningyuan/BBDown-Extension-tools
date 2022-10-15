@@ -32,7 +32,7 @@ def bv2av(x):
 
 # 用于获取视频状态
 def FindVideo(avid):
-    url = 'http://api.bilibili.com/archive_stat/stat?aid='+str(avid)  # 使用？携带参数
+    url = 'https://api.bilibili.com/archive_stat/stat?aid='+str(avid)  # 使用？携带参数
     rfv=get(url).json()
     json_str=dumps(rfv)
     data2=loads(json_str)
@@ -59,7 +59,7 @@ def validateTitle(title):
 
 
 def ngp(bvid): #B站获取视频信息的api
-    url = 'http://api.bilibili.com/x/web-interface/view?bvid='+str(bvid)  # 使用？携带参数
+    url = 'https://api.bilibili.com/x/web-interface/view?bvid='+str(bvid)  # 使用？携带参数
     rsp=get(url).json()
     json_str=dumps(rsp)
     data2=loads(json_str)

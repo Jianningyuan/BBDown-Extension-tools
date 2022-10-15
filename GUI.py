@@ -121,7 +121,7 @@ def Show():
 
 
 def ExitOfWindow():
-    win.destroy()
+    win.destroy()#调用
 
 if __name__ == '__main__':
     bu1=Button(win,text="下载",command=ThreadOfDownloadMultiP)
