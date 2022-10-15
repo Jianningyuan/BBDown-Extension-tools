@@ -15,7 +15,7 @@
   DownloadTheDefaultDirectory=D:\BilibiliDownloadFile\
   DirectoryOf7z=C:\Program Files\7-Zip\7z.exe
   ```
-**不再提供二进制文件，请自行编译**
+**不再提供二进制文件，请自行编译**  
 **需要使用的模块如下：**
 - ctypes
 - tkinter
@@ -53,3 +53,15 @@ The following is an example of BD.config:
   DownloadTheDefaultDirectory=D:\BilibiliDownloadFile\
   DirectoryOf7z=C:\Program Files\7-Zip\7z.exe
   ```
+**Binaries are no longer provided, please compile yourself**  
+**The following modules need to be used:**
+- ctypes
+- tkinter
+- threading
+- json
+- re
+- os
+- subprocess
+- requests
+- configparser
+- pywin32
