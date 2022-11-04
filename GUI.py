@@ -1,5 +1,5 @@
 from tkinter import Label, Tk, END
-from tkinter.ttk import Entry,Button,Style
+from tkinter.ttk import Entry,Button
 from tkinter.messagebox import showwarning
 import ctypes
 from BD import DownLoad, ngp, DownLoadInit

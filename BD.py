@@ -71,6 +71,7 @@ def ngp(bvid): #B站获取视频信息的api
 
 
 def MultiVidieoDownload(BV,workDir,P):
+    call(ConfigOfBBDown+" "+BV+" --sub-only "+"--work-dir "+workDir,shell=True)
     call(ConfigOfBBDown+" "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
 
 
@@ -78,6 +79,7 @@ def SingleVideoDownload(BV,workDir,P):
     # call("@echo off")
     mkdir(workDir)#"D:\BilibiliDownloadFile\Temporary")
     SetFileAttributes(workDir,FILE_ATTRIBUTE_HIDDEN)
+    call(ConfigOfBBDown+" "+BV+" --sub-only "+"--work-dir "+workDir,shell=True)
     call(ConfigOfBBDown+" "+BV+" -p "+P+" --work-dir "+workDir,shell=True)
 
 
