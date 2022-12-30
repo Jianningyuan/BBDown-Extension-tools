@@ -48,7 +48,7 @@
 (**如有任何使用问题请移步Issues页面提问或自行修改代码。作者本人繁忙，修BUG很慢**)
 
 ## 感谢名单：
-[BBDowm](https://github.com/nilaoda/BBDown)  
+[BBDown](https://github.com/nilaoda/BBDown)  
 [Bilibili-API-collect](https://github.com/Jianningyuan/bilibili-API-collect)
 ## 特别鸣谢：
 由Microsoft提供的独立源代码编辑器  
